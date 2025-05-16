@@ -1,11 +1,3 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
 class SinglyLinkedListNode:
     def __init__(self, node_data):
         self.data = node_data
@@ -14,14 +6,14 @@ class SinglyLinkedListNode:
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None
-
-def print_singly_linked_list(node, sep, fptr):
+        
+def print_singly_linked_list(node, sep=' '):
     while node:
-        fptr.write(str(node.data))
+        print(node.data, end='')
         node = node.next
         if node:
-            fptr.write(sep)
+            print(sep, end='')
+    print()
 
 def insertNodeAtHead(llist, data):
     new_node = SinglyLinkedListNode(data)
@@ -29,8 +21,6 @@ def insertNodeAtHead(llist, data):
     return new_node
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
     llist_count = int(input())
 
     llist = SinglyLinkedList()
@@ -39,7 +29,4 @@ if __name__ == '__main__':
         llist_item = int(input())
         llist.head = insertNodeAtHead(llist.head, llist_item)
 
-    print_singly_linked_list(llist.head, '\n', fptr)
-    fptr.write('\n')
-
-    fptr.close()
+    print_singly_linked_list(llist.head)
